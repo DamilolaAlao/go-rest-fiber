@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/DamilolaAlao/go-rest-fiber/book"
 	"github.com/DamilolaAlao/go-rest-fiber/database"
 	"github.com/gofiber/fiber"
@@ -21,6 +22,9 @@ func initDatabase()  {
 		panic("Failed to connect to database")
 	}
 	fmt.Println("Database connection successfully opened")
+
+	database.DBConn.AutoMigrate(&book.Book{})
+	fmt.Println("Database Migrated")
 }
 
 func setupRoutes(app *fiber.App)  {
@@ -32,6 +36,9 @@ func setupRoutes(app *fiber.App)  {
 
 func main()  {
 	app := fiber.New()
+
+	initDatabase()
+	defer database.DBConn.Close()
 
 	app.Use(logger.New())
 

@@ -1,5 +1,10 @@
 package database
 
 import (
-	"github.com/gofiber/fiber"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+)
+
+var(
+	DBConn *gorm.DB
 )
