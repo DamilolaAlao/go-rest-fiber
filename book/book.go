@@ -22,6 +22,7 @@ func GetBooks(c *fiber.Ctx)  {
 	c.JSON(books)
 }
 
+//GetBook to Get one book
 func GetBook(c *fiber.Ctx)  {
 	id:= c.Params("id")
 	db := database.DBConn
@@ -30,6 +31,7 @@ func GetBook(c *fiber.Ctx)  {
 	c.JSON(book)
 }
 
+//NewBook to Create a new book
 func NewBook(c *fiber.Ctx)  {
 	db := database.DBConn
 	book := new(Book)
@@ -41,6 +43,7 @@ func NewBook(c *fiber.Ctx)  {
 	c.JSON(book)
 }
 
+//DeleteBook to Delete a book
 func DeleteBook(c *fiber.Ctx)  {
 	id:= c.Params("id")
 	db := database.DBConn

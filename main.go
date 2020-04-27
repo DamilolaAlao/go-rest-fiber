@@ -11,10 +11,6 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
-func helloWorld(c *fiber.Ctx)  {
-	c.Send("Hello, World!")
-}
-
 func initDatabase()  {
 	var err error
 	database.DBConn, err = gorm.Open("sqlite3", "books.db")
